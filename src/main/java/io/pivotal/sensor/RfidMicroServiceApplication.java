@@ -33,9 +33,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class RfidMicroServiceApplication {
 	
 	
-	private String rfidQueue;
+	private String queueNameRFID;
 	
-	private String tiltQueue;
+	private String queueNameTilt;
 	
 	private String exchange;
 
@@ -61,13 +61,13 @@ public class RfidMicroServiceApplication {
     
 	@Bean
 	Queue queueRFID() { //println there for testing
-		System.out.println(rfidQueue+"----");
-		return new Queue(rfidQueue, true);
+		System.out.println(queueNameRFID+"----");
+		return new Queue(queueNameRFID, true);
 	}
 	
 	@Bean
 	Queue queueTilt() {
-		return new Queue(tiltQueue, true);
+		return new Queue(queueNameTilt, true);
 	}
 	
 	@Bean
@@ -89,7 +89,7 @@ public class RfidMicroServiceApplication {
 	SimpleMessageListenerContainer containerRFID(ConnectionFactory connectionFactory, MessageListenerAdapter listenerAdapterRFID) {
 		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
 		container.setConnectionFactory(connectionFactory);
-		container.setQueueNames(rfidQueue);
+		container.setQueueNames(queueNameRFID);
 		container.setMessageListener(listenerAdapterRFID);
 		return container;
 	}
@@ -98,7 +98,7 @@ public class RfidMicroServiceApplication {
 	SimpleMessageListenerContainer containerTilt(ConnectionFactory connectionFactory, MessageListenerAdapter listenerAdapterTilt) {
 		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
 		container.setConnectionFactory(connectionFactory);
-		container.setQueueNames(tiltQueue);
+		container.setQueueNames(queueNameTilt);
 		container.setMessageListener(listenerAdapterTilt);
 		return container;
 	}
@@ -145,8 +145,8 @@ public class RfidMicroServiceApplication {
 	 @Autowired
 	    void setEnvironment(Environment e) { //used to test reading of values
 	    
-		 	rfidQueue = e.getProperty("rfid.queueNameRFID");
-			tiltQueue = e.getProperty("rfid.queueNameTilt");
+		 	queueNameRFID = e.getProperty("rfid.queueNameRFID");
+			queueNameTilt = e.getProperty("rfid.queueNameTilt");
 			exchange = e.getProperty("rfid.exchangeName");
 			rfidRoutingKey = e.getProperty("rfid.routingKeyRFID");
 			tiltRoutingKey = e.getProperty("rfid.routingKeyTilt");
