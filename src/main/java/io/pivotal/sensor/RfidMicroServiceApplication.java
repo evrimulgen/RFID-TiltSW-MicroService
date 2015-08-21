@@ -28,10 +28,9 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableAutoConfiguration
 @ComponentScan
 @EnableEurekaClient
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @SpringBootApplication
 public class RfidMicroServiceApplication {
-	
 	
 	private String queueNameRFID;
 	
@@ -147,13 +146,13 @@ public class RfidMicroServiceApplication {
 	    
 		 	queueNameRFID = e.getProperty("rfid.queueNameRFID");
 			queueNameTilt = e.getProperty("rfid.queueNameTilt");
-			exchange = e.getProperty("rfid.exchangeName");
+			exchange = e.getProperty("exchangeName");
 			rfidRoutingKey = e.getProperty("rfid.routingKeyRFID");
 			tiltRoutingKey = e.getProperty("rfid.routingKeyTilt");
 		 
 	    	System.out.println(e.getProperty("rfid.queueNameRFID"));
 	    	System.out.println(e.getProperty("rfid.queueNameTilt"));
-	    	System.out.println(e.getProperty("rfid.exchangeName"));
+	    	System.out.println(e.getProperty("exchangeName"));
 	    	System.out.println(e.getProperty("rfid.routingKeyRFID"));
 	    	System.out.println(e.getProperty("rfid.routingKeyTilt"));	
 

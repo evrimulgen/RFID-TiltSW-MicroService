@@ -26,7 +26,7 @@ public class TiltSwitchReceiver {
 			System.out.println("Received [" + msg + "]");
 			// TODO
 			// Get tilt sensor by its ID
-			TiltSwitch ts = tiltSwitchSensorService.getTileSwitchByTiltSwitchID(readings[0]);
+			TiltSwitch ts = tiltSwitchSensorService.getTiltSwitchByTiltSwitchID(readings[0]);
 			if (ts != null) {// store event
 			TiltSwitchEvent e = new TiltSwitchEvent();
 			e.setEventTime(new Date());//TODO time should come from device, but this is a hack who cares :-) too much work to get device setup to get time from server
