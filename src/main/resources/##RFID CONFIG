@@ -1,0 +1,27 @@
+##RFID CONFIG
+
+
+spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+flyway.validate-on-migrate=false
+flyway.clean-on-validation-error=true
+flyway.init-on-migrate=true
+flyway.schemas=public
+
+spring.datasource.url=jdbc:postgresql://psql-5432.192.168.11.11.xip.io:61015/security
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.username=postgres
+spring.datasource.password=pw
+
+
+
+#spring.rabbitmq.host={$spring.rabbitmq.host}
+#spring.rabbitmq.port={$spring.rabbitmq.port}
+#spring.rabbitmq.username={$spring.rabbitmq.username}
+#spring.rabbitmq.password={$spring.rabbitmq.password}
+
+#spring.rabbitmq.host=178.62.48.242
+#spring.rabbitmq.port=5672
+#spring.rabbitmq.username=mqtt
+#spring.rabbitmq.password=mqtt

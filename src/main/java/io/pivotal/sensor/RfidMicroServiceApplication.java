@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableAutoConfiguration
 @ComponentScan
 @EnableEurekaClient
-//@EnableDiscoveryClient
 @SpringBootApplication
 public class RfidMicroServiceApplication {
 	

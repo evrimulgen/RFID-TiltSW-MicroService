@@ -1,0 +1,25 @@
+##IOT CONFIG
+
+
+
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+eureka.client.eureka-server-port=8761
+
+
+
+# DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://psql-5432.192.168.11.11.xip.io:61015/security
+spring.datasource.username=postgres
+spring.datasource.password=pw
+
+# JPA (JpaBaseConfiguration, HibernateJpaAutoConfiguration)
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# MONGODB (MongoProperties)
+spring.data.mongodb.host=mongo-cl-27017.192.168.11.11.xip.io
+spring.data.mongodb.port=61014
+#spring.data.mongodb.uri=mongodb://CloudFoundry_uns7iakp_3836fql0_1q443lss:pPSHJneaY3h2HsksRfopdD5PFvsISnU1@ds031561.mongolab.com:31561/CloudFoundry_uns7iakp_3836fql0
+spring.data.mongodb.database=arduino
