@@ -25,9 +25,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RestController;
 
-@EnableAutoConfiguration
-@ComponentScan
-@EnableEurekaClient
+//@EnableEurekaClient
 @SpringBootApplication
 public class RfidMicroServiceApplication {
 	
@@ -41,13 +39,9 @@ public class RfidMicroServiceApplication {
 
 	private String tiltRoutingKey;
 	
-		//commented out for use of spring cloud config
-//	final static String rfidQueue = "arduino-rfid-event-queue";
+	//commented out for use of spring cloud config
+    //final static String rfidQueue = "arduino-rfid-event-queue";
 	//final static String tiltQueue = "arduino-tilt-event-queue";
-//	
-//	commented out temporarily
-//	@Autowired
-//	AnnotationConfigApplicationContext context;
 
 
 	@Autowired
@@ -58,8 +52,7 @@ public class RfidMicroServiceApplication {
     }
     
 	@Bean
-	Queue queueRFID() { //println there for testing
-		System.out.println(queueNameRFID+"----");
+	Queue queueRFID() { 
 		return new Queue(queueNameRFID, true);
 	}
 	
@@ -121,24 +114,7 @@ public class RfidMicroServiceApplication {
 		return new MessageListenerAdapter(receiverTilt, "receiveMessage");
 	}
 
-//	@Bean
-//	TopicExchange exchangeRFID() {
-//		return new TopicExchange("arduino-rfid-exchange", true, false);
-//	}
 //	
-//	@Bean
-//	TopicExchange exchangeTilt() {
-//		return new TopicExchange("arduino-tilt-exchange", true, false);
-//	}
-//	
-//	@Bean
-//	Binding bindingRFIDWithRFIDExchange(TopicExchange exchangeSensor, TopicExchange exchangeRFID) {
-//		return BindingBuilder.bind(exchangeSensor).to(exchangeRFID).with("arduino-rfid-exchange");
-//	}
-//	
-//	@Bean
-//	Binding bindingTiltWithTiltExchange(TopicExchange exchangeSensor, TopicExchange exchangeTilt) {
-//		return BindingBuilder.bind(exchangeSensor).to(exchangeTilt).with("arduino-tilt-exchange");
 	
 	 @Autowired
 	    void setEnvironment(Environment e) { //used to test reading of values
@@ -159,46 +135,81 @@ public class RfidMicroServiceApplication {
 
 }
 
-//whole class potentially not needed any more
-@RestController
-@RefreshScope
-class queueNameRestController {
-	
-	@Value ("${rfid.queueNameRFID}")
-	private String rfidQueue;
-	
-	String rfidQueue() {
-		return this.rfidQueue;
-	}
-	
-	@Value ("${rfid.queueNameTilt}")
-	private String tiltQueue;
-	
-	String tiltQueue() {
-		return this.tiltQueue;
-	}
-	
-	@Value ("${rfid.exchangeName}")
-	private String exchange;
-	
-	String exchange() {
-		return this.exchange;
-	}
-	
-	@Value ("${rfid.routingKeyRFID}")
-	private String rfidRoutingKey;
-	
-	String rfidRoutingKey() {
-		return this.rfidRoutingKey;
-	}
-	
-	@Value ("${rfid.routingKeyTilt}")
-	private String tiltRoutingKey;
-	
-	String tiltRoutingKey () {
-		return this.tiltRoutingKey;
-	}
-	
-}
+
+
+
+
+
+
+
+
+
+//commented out temporarily
+//@Autowired
+//AnnotationConfigApplicationContext context;
+
+
+//@Bean
+//TopicExchange exchangeRFID() {
+//	return new TopicExchange("arduino-rfid-exchange", true, false);
+//}
+//
+//@Bean
+//TopicExchange exchangeTilt() {
+//	return new TopicExchange("arduino-tilt-exchange", true, false);
+//}
+//
+//@Bean
+//Binding bindingRFIDWithRFIDExchange(TopicExchange exchangeSensor, TopicExchange exchangeRFID) {
+//	return BindingBuilder.bind(exchangeSensor).to(exchangeRFID).with("arduino-rfid-exchange");
+//}
+//
+//@Bean
+//Binding bindingTiltWithTiltExchange(TopicExchange exchangeSensor, TopicExchange exchangeTilt) {
+//	return BindingBuilder.bind(exchangeSensor).to(exchangeTilt).with("arduino-tilt-exchange");
+
+
+//
+////whole class potentially not needed any more
+//@RestController
+//@RefreshScope
+//class queueNameRestController {
+//	
+//	@Value ("${rfid.queueNameRFID}")
+//	private String rfidQueue;
+//	
+//	String rfidQueue() {
+//		return this.rfidQueue;
+//	}
+//	
+//	@Value ("${rfid.queueNameTilt}")
+//	private String tiltQueue;
+//	
+//	String tiltQueue() {
+//		return this.tiltQueue;
+//	}
+//	
+//	@Value ("${rfid.exchangeName}")
+//	private String exchange;
+//	
+//	String exchange() {
+//		return this.exchange;
+//	}
+//	
+//	@Value ("${rfid.routingKeyRFID}")
+//	private String rfidRoutingKey;
+//	
+//	String rfidRoutingKey() {
+//		return this.rfidRoutingKey;
+//	}
+//	
+//	@Value ("${rfid.routingKeyTilt}")
+//	private String tiltRoutingKey;
+//	
+//	String tiltRoutingKey () {
+//		return this.tiltRoutingKey;
+//	}
+//	
+//}
 
 
